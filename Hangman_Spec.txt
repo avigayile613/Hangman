@@ -1,0 +1,76 @@
+# Hangman  
+
+## Overview  
+This document describes the requirements for the software implementation of the classic game of Hangman. This software allows a single player to guess a hidden word chosen by the computer. A description of the game plus the requirements of this implementation are provided below.  
+
+## The Game  
+The player is presented with a hidden word, displayed as a series of blank spaces representing each letter. The player guesses one letter at a time by selecting from the available alphabet.  
+
+If the guessed letter is in the word, all instances of that letter are revealed in their correct positions. If the guessed letter is not in the word, a part of the hangman figure is added.  
+
+The player continues guessing letters until either the full word is revealed (win) or the hangman figure is fully drawn after a fixed number of incorrect guesses (loss). The player may also choose to give up, which reveals the word and ends the game.  
+
+## Software Implementation  
+
+### UI Elements  
+The software will present the Hangman game with the following UI elements:
+
+- **Hangman display area** (visual representation of gallows and figure)
+- **Word display label** (shows current progress of the hidden word using underscores and revealed letters)
+- **Alphabet button grid (A–Z)** for user input
+- **Toolbar (top of screen):**
+  - *Start* button  
+  - *Give Up* button  
+  - Label to display *Game Status* message  
+
+### Game State  
+The game maintains the following internal state:
+
+- Selected hidden word (string)
+- Collection of guessed letters
+- Number of incorrect guesses
+- Maximum allowed incorrect guesses (6)
+
+## Game Process and Rules  
+
+- The game starts when the player clicks **Start**. Until then, all letter inputs are ignored.  
+  Game status message:  
+  > "Click Start to begin game."  
+
+- After **Start** is clicked:
+  - A random word is selected
+  - Word display initializes to underscores (e.g., `_ _ _ _`)
+  - Hangman display is cleared
+  - All letter buttons are enabled
+  - Status message updates to show the number of guesses remaining.
+
+- **Letter Guessing:**
+  - Player selects a letter from the A–Z buttons
+  - If the letter has already been guessed, input is ignored
+  - If the guess is correct:
+    - All matching letters are revealed in the word display
+  - If the guess is incorrect:
+    - Incorrect guess count increments, displayed in the status message.
+    - Hangman figure updates with next body part
+  - Selected letter button becomes disabled after use
+
+- **Winning:**
+  - All letters in the word are revealed
+  - Status message:  
+    > "You Win!"  
+  - All letter inputs are ignored
+
+- **Losing:**
+  - Maximum number of incorrect guesses is reached (6)
+  - Full hangman figure is displayed
+  - Status message:  
+    > "Game Over"  
+  - Word is revealed
+  - All letter inputs are ignored
+
+- **Give Up:**
+  - Player clicks **Give Up**
+  - Word is revealed
+  - Status message:  
+    > "Game Over"  
+  - All letter inputs are ignored
