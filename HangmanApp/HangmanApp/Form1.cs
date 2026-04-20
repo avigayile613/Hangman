@@ -39,20 +39,20 @@ namespace HangmanApp
         {
             Button btn = (Button)sender;
             lstguessedletters.Add(btn.Text);
-            BuildWordString();
-            if (!lstlettersinhiddenword.Contains(btn.Text))
-            {
+            BuildWordString();//rebuild and display the hidden word label 
+            if (!lstlettersinhiddenword.Contains(btn.Text))//Check if hidden word included the letter guessed
+            {//If it did not:
                 AddBodyPart();
                 btn.BackColor = Color.LightGray;
-                btn.Enabled = false;
-                guessesremaining--;
+                btn.Enabled = false; //change button color and disable
+                guessesremaining--;//decrease number of wrong guesses remaining
                 DetectLoss();
 
             }
             else
-            {
+            {//if it did:
                 btn.BackColor = Color.LightGreen;
-                btn.Enabled = false;
+                btn.Enabled = false;//change button color and disable
                 DetectWin();
             }
             UpdateMessage();
@@ -60,7 +60,7 @@ namespace HangmanApp
 
         private void DetectWin()
         {
-            if (lblHiddenWord.Text.Replace(" ", "") == hiddenword)
+            if (lblHiddenWord.Text.Replace(" ", "") == hiddenword) //check if hidden word label contains the full hidden word
             {
                 ChangeGameStatus(GameStatusEnum.Won);
             }
@@ -76,7 +76,7 @@ namespace HangmanApp
 
         private void BtnGiveUp_Click(object? sender, EventArgs e)
         {
-            lblHiddenWord.Text = hiddenword;
+            lblHiddenWord.Text = hiddenword;//Display the full hidden word
             ChangeGameStatus(GameStatusEnum.GaveUp);
             UpdateMessage();
         }
@@ -94,7 +94,7 @@ namespace HangmanApp
                     msg = "Game Over";
                     break;
                 case GameStatusEnum.Won:
-                    msg = "You Won!";
+                    msg = "You Win!";
                     break;
             }
             lblMessage.Text = msg;
@@ -113,41 +113,52 @@ namespace HangmanApp
             switch (status)
             {
                 case GameStatusEnum.NotStarted:
+                    btnStart.Text = "Start";
                     btnGiveUp.Text = "Give Up";
                     lstguessedletters.Clear();
                     lstlettersinhiddenword.Clear();
                     guessesremaining = 6;
-                    lstbodyparts.ForEach(b => b.Visible = false);
+                    lstbodyparts.ForEach(b => { b.Visible = false; b.ForeColor = Color.Black; });
+                    lblBody.BackColor = Color.Black;
                     lstalphabetbuttons.ForEach(b => b.BackColor = Color.White);
                     break;
                 case GameStatusEnum.Playing:
                     btnGiveUp.Enabled = true;
                     btnStart.Enabled = false;
-                    lstalphabetbuttons.ForEach(b => b.Enabled = true);
+                    SetAlphabetButtonsEnabled(true);
                     break;
                 case GameStatusEnum.Lost:
                     lstbodyparts.ForEach(b => b.ForeColor = Color.Red);
                     lblBody.BackColor = Color.Red;
                     btnGiveUp.Text = "Reveal Word";
-                    btnStart.Text = "Start New Game";
-                    btnStart.Enabled = true;
-                    lstalphabetbuttons.ForEach(b => b.Enabled = false);
+                    ResetStartButton();
+                    SetAlphabetButtonsEnabled(false);
                     break;
                 case GameStatusEnum.GaveUp:
                 case GameStatusEnum.Won:
-                    lstalphabetbuttons.ForEach(b => b.Enabled = false);
+                    ResetStartButton();
+                    SetAlphabetButtonsEnabled(false);
                     btnGiveUp.Enabled = false;
-                    btnStart.Text = "Start New Game";
-                    btnStart.Enabled = true;
                     break;
             }
             UpdateMessage();
         }
 
+        private void SetAlphabetButtonsEnabled(bool enabled)
+        {
+            lstalphabetbuttons.ForEach(b => b.Enabled = enabled);
+        }
+
+        private void ResetStartButton()
+        {
+            btnStart.Text = "Start New Game";
+            btnStart.Enabled = true;
+        }
+
         private void PickHiddenWord()
         {
             hiddenword = lstwords[rnd.Next(lstwords.Count())];
-            for (int i = 0; i < hiddenword.Length; i++)
+            for (int i = 0; i < hiddenword.Length; i++)//add each letter in the hidden word to a list
             {
                 lstlettersinhiddenword.Add(hiddenword[i].ToString());
             }
@@ -157,23 +168,24 @@ namespace HangmanApp
         private void BuildWordString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (string letter in lstlettersinhiddenword)
+            foreach (string letter in lstlettersinhiddenword)//go through each letter that player guessed
             {
-                if (lstguessedletters.Contains(letter))
+                if (lstguessedletters.Contains(letter))//check if guessed letter is contained in hidden word
                 {
-                    sb.Append(letter + " ");
+                    sb.Append(letter + " ");//if hidden word contains the letter, reveal it
                 }
                 else
                 {
-                    sb.Append("__ ");
+                    sb.Append("__ ");//if it does not, put _ in the place of the letter
                 }
             }
             lblHiddenWord.Text = sb.ToString();
         }
 
         private void AddBodyPart()
-        {
-            lstbodyparts.Where(b => b.Visible == false).ToList().FirstOrDefault(b => b.Visible = true);
+        {//find the first body part in the list that isn't visible, and make it visible
+            var parttoshow = lstbodyparts.FirstOrDefault(b => !b.Visible);
+            if (parttoshow != null) {parttoshow.Visible = true;}
         }
 
 
