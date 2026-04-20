@@ -68,12 +68,12 @@
             label3 = new Label();
             label4 = new Label();
             pnlMan = new Panel();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
+            lblBody = new Label();
+            lblRightLeg = new Label();
+            lblRightArm = new Label();
+            lblLeftLeg = new Label();
+            lblLeftArm = new Label();
+            lblHead = new Label();
             tblMain.SuspendLayout();
             tblToolbar.SuspendLayout();
             tblAlphabet.SuspendLayout();
@@ -134,6 +134,7 @@
             // btnGiveUp
             // 
             btnGiveUp.Dock = DockStyle.Fill;
+            btnGiveUp.Enabled = false;
             btnGiveUp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnGiveUp.Location = new Point(963, 3);
             btnGiveUp.Name = "btnGiveUp";
@@ -153,7 +154,6 @@
             lblMessage.TabIndex = 2;
             lblMessage.Text = "Click start to begin game.";
             lblMessage.TextAlign = ContentAlignment.MiddleCenter;
-            lblMessage.Click += label1_Click;
             // 
             // tblAlphabet
             // 
@@ -202,11 +202,11 @@
             tblAlphabet.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tblAlphabet.Size = new Size(745, 270);
             tblAlphabet.TabIndex = 1;
-            tblAlphabet.Paint += tblAlphabet_Paint;
             // 
             // btnA
             // 
             btnA.Dock = DockStyle.Fill;
+            btnA.Enabled = false;
             btnA.Font = new Font("Segoe UI", 12F);
             btnA.Location = new Point(3, 3);
             btnA.Name = "btnA";
@@ -218,6 +218,7 @@
             // btnB
             // 
             btnB.Dock = DockStyle.Fill;
+            btnB.Enabled = false;
             btnB.Font = new Font("Segoe UI", 12F);
             btnB.Location = new Point(96, 3);
             btnB.Name = "btnB";
@@ -229,6 +230,7 @@
             // btnC
             // 
             btnC.Dock = DockStyle.Fill;
+            btnC.Enabled = false;
             btnC.Font = new Font("Segoe UI", 12F);
             btnC.Location = new Point(189, 3);
             btnC.Name = "btnC";
@@ -240,6 +242,7 @@
             // btnD
             // 
             btnD.Dock = DockStyle.Fill;
+            btnD.Enabled = false;
             btnD.Font = new Font("Segoe UI", 12F);
             btnD.Location = new Point(282, 3);
             btnD.Name = "btnD";
@@ -251,6 +254,7 @@
             // btnE
             // 
             btnE.Dock = DockStyle.Fill;
+            btnE.Enabled = false;
             btnE.Font = new Font("Segoe UI", 12F);
             btnE.Location = new Point(375, 3);
             btnE.Name = "btnE";
@@ -262,6 +266,7 @@
             // btnF
             // 
             btnF.Dock = DockStyle.Fill;
+            btnF.Enabled = false;
             btnF.Font = new Font("Segoe UI", 12F);
             btnF.Location = new Point(468, 3);
             btnF.Name = "btnF";
@@ -273,6 +278,7 @@
             // btnG
             // 
             btnG.Dock = DockStyle.Fill;
+            btnG.Enabled = false;
             btnG.Font = new Font("Segoe UI", 12F);
             btnG.Location = new Point(561, 3);
             btnG.Name = "btnG";
@@ -284,6 +290,7 @@
             // btnH
             // 
             btnH.Dock = DockStyle.Fill;
+            btnH.Enabled = false;
             btnH.Font = new Font("Segoe UI", 12F);
             btnH.Location = new Point(654, 3);
             btnH.Name = "btnH";
@@ -295,6 +302,7 @@
             // btnI
             // 
             btnI.Dock = DockStyle.Fill;
+            btnI.Enabled = false;
             btnI.Font = new Font("Segoe UI", 12F);
             btnI.Location = new Point(3, 70);
             btnI.Name = "btnI";
@@ -306,6 +314,7 @@
             // btnJ
             // 
             btnJ.Dock = DockStyle.Fill;
+            btnJ.Enabled = false;
             btnJ.Font = new Font("Segoe UI", 12F);
             btnJ.Location = new Point(96, 70);
             btnJ.Name = "btnJ";
@@ -317,6 +326,7 @@
             // btnK
             // 
             btnK.Dock = DockStyle.Fill;
+            btnK.Enabled = false;
             btnK.Font = new Font("Segoe UI", 12F);
             btnK.Location = new Point(189, 70);
             btnK.Name = "btnK";
@@ -328,6 +338,7 @@
             // btnL
             // 
             btnL.Dock = DockStyle.Fill;
+            btnL.Enabled = false;
             btnL.Font = new Font("Segoe UI", 12F);
             btnL.Location = new Point(282, 70);
             btnL.Name = "btnL";
@@ -339,6 +350,7 @@
             // btnM
             // 
             btnM.Dock = DockStyle.Fill;
+            btnM.Enabled = false;
             btnM.Font = new Font("Segoe UI", 12F);
             btnM.Location = new Point(375, 70);
             btnM.Name = "btnM";
@@ -350,6 +362,7 @@
             // btnN
             // 
             btnN.Dock = DockStyle.Fill;
+            btnN.Enabled = false;
             btnN.Font = new Font("Segoe UI", 12F);
             btnN.Location = new Point(468, 70);
             btnN.Name = "btnN";
@@ -361,6 +374,7 @@
             // btnO
             // 
             btnO.Dock = DockStyle.Fill;
+            btnO.Enabled = false;
             btnO.Font = new Font("Segoe UI", 12F);
             btnO.Location = new Point(561, 70);
             btnO.Name = "btnO";
@@ -372,6 +386,7 @@
             // btnP
             // 
             btnP.Dock = DockStyle.Fill;
+            btnP.Enabled = false;
             btnP.Font = new Font("Segoe UI", 12F);
             btnP.Location = new Point(654, 70);
             btnP.Name = "btnP";
@@ -383,6 +398,7 @@
             // btnQ
             // 
             btnQ.Dock = DockStyle.Fill;
+            btnQ.Enabled = false;
             btnQ.Font = new Font("Segoe UI", 12F);
             btnQ.Location = new Point(3, 137);
             btnQ.Name = "btnQ";
@@ -394,6 +410,7 @@
             // btnR
             // 
             btnR.Dock = DockStyle.Fill;
+            btnR.Enabled = false;
             btnR.Font = new Font("Segoe UI", 12F);
             btnR.Location = new Point(96, 137);
             btnR.Name = "btnR";
@@ -405,6 +422,7 @@
             // btnS
             // 
             btnS.Dock = DockStyle.Fill;
+            btnS.Enabled = false;
             btnS.Font = new Font("Segoe UI", 12F);
             btnS.Location = new Point(189, 137);
             btnS.Name = "btnS";
@@ -416,6 +434,7 @@
             // btnT
             // 
             btnT.Dock = DockStyle.Fill;
+            btnT.Enabled = false;
             btnT.Font = new Font("Segoe UI", 12F);
             btnT.Location = new Point(282, 137);
             btnT.Name = "btnT";
@@ -427,6 +446,7 @@
             // btnU
             // 
             btnU.Dock = DockStyle.Fill;
+            btnU.Enabled = false;
             btnU.Font = new Font("Segoe UI", 12F);
             btnU.Location = new Point(375, 137);
             btnU.Name = "btnU";
@@ -438,6 +458,7 @@
             // btnV
             // 
             btnV.Dock = DockStyle.Fill;
+            btnV.Enabled = false;
             btnV.Font = new Font("Segoe UI", 12F);
             btnV.Location = new Point(468, 137);
             btnV.Name = "btnV";
@@ -449,6 +470,7 @@
             // btnW
             // 
             btnW.Dock = DockStyle.Fill;
+            btnW.Enabled = false;
             btnW.Font = new Font("Segoe UI", 12F);
             btnW.Location = new Point(561, 137);
             btnW.Name = "btnW";
@@ -460,6 +482,7 @@
             // btnX
             // 
             btnX.Dock = DockStyle.Fill;
+            btnX.Enabled = false;
             btnX.Font = new Font("Segoe UI", 12F);
             btnX.Location = new Point(654, 137);
             btnX.Name = "btnX";
@@ -471,6 +494,7 @@
             // btnY
             // 
             btnY.Dock = DockStyle.Fill;
+            btnY.Enabled = false;
             btnY.Font = new Font("Segoe UI", 12F);
             btnY.Location = new Point(282, 204);
             btnY.Name = "btnY";
@@ -482,6 +506,7 @@
             // btnZ
             // 
             btnZ.Dock = DockStyle.Fill;
+            btnZ.Enabled = false;
             btnZ.Font = new Font("Segoe UI", 12F);
             btnZ.Location = new Point(375, 204);
             btnZ.Name = "btnZ";
@@ -514,7 +539,6 @@
             lblHiddenWord.Name = "lblHiddenWord";
             lblHiddenWord.Size = new Size(739, 72);
             lblHiddenWord.TabIndex = 0;
-            lblHiddenWord.Text = "__ __ __ __";
             lblHiddenWord.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
@@ -597,81 +621,85 @@
             // 
             pnlMan.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             tableLayoutPanel1.SetColumnSpan(pnlMan, 3);
-            pnlMan.Controls.Add(label6);
-            pnlMan.Controls.Add(label10);
-            pnlMan.Controls.Add(label8);
-            pnlMan.Controls.Add(label7);
-            pnlMan.Controls.Add(label9);
-            pnlMan.Controls.Add(label5);
+            pnlMan.Controls.Add(lblBody);
+            pnlMan.Controls.Add(lblRightLeg);
+            pnlMan.Controls.Add(lblRightArm);
+            pnlMan.Controls.Add(lblLeftLeg);
+            pnlMan.Controls.Add(lblLeftArm);
+            pnlMan.Controls.Add(lblHead);
             pnlMan.Location = new Point(3, 113);
             pnlMan.Name = "pnlMan";
             pnlMan.Size = new Size(288, 324);
             pnlMan.TabIndex = 5;
             // 
-            // label5
+            // lblBody
             // 
-            label5.Anchor = AnchorStyles.Top;
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 60F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(86, -33);
-            label5.Name = "label5";
-            label5.Size = new Size(132, 133);
-            label5.TabIndex = 0;
-            label5.Text = "O";
+            lblBody.BackColor = Color.Black;
+            lblBody.Location = new Point(141, 72);
+            lblBody.Name = "lblBody";
+            lblBody.Size = new Size(10, 125);
+            lblBody.TabIndex = 1;
+            lblBody.Visible = false;
             // 
-            // label6
+            // lblRightLeg
             // 
-            label6.BackColor = Color.Black;
-            label6.Location = new Point(141, 72);
-            label6.Name = "label6";
-            label6.Size = new Size(10, 125);
-            label6.TabIndex = 1;
-            label6.Text = "label6";
+            lblRightLeg.AutoSize = true;
+            lblRightLeg.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRightLeg.Location = new Point(137, 163);
+            lblRightLeg.Name = "lblRightLeg";
+            lblRightLeg.Size = new Size(80, 106);
+            lblRightLeg.TabIndex = 5;
+            lblRightLeg.Text = "\\";
+            lblRightLeg.TextAlign = ContentAlignment.TopCenter;
+            lblRightLeg.Visible = false;
             // 
-            // label7
+            // lblRightArm
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(86, 163);
-            label7.Name = "label7";
-            label7.Size = new Size(80, 106);
-            label7.TabIndex = 2;
-            label7.Text = "/";
-            label7.TextAlign = ContentAlignment.TopCenter;
+            lblRightArm.AutoSize = true;
+            lblRightArm.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRightArm.Location = new Point(137, 72);
+            lblRightArm.Name = "lblRightArm";
+            lblRightArm.Size = new Size(80, 106);
+            lblRightArm.TabIndex = 3;
+            lblRightArm.Text = "\\";
+            lblRightArm.TextAlign = ContentAlignment.TopCenter;
+            lblRightArm.Visible = false;
             // 
-            // label8
+            // lblLeftLeg
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(137, 72);
-            label8.Name = "label8";
-            label8.Size = new Size(80, 106);
-            label8.TabIndex = 3;
-            label8.Text = "\\";
-            label8.TextAlign = ContentAlignment.TopCenter;
+            lblLeftLeg.AutoSize = true;
+            lblLeftLeg.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLeftLeg.Location = new Point(86, 163);
+            lblLeftLeg.Name = "lblLeftLeg";
+            lblLeftLeg.Size = new Size(80, 106);
+            lblLeftLeg.TabIndex = 2;
+            lblLeftLeg.Text = "/";
+            lblLeftLeg.TextAlign = ContentAlignment.TopCenter;
+            lblLeftLeg.Visible = false;
             // 
-            // label9
+            // lblLeftArm
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(86, 72);
-            label9.Name = "label9";
-            label9.Size = new Size(80, 106);
-            label9.TabIndex = 4;
-            label9.Text = "/";
-            label9.TextAlign = ContentAlignment.TopCenter;
+            lblLeftArm.AutoSize = true;
+            lblLeftArm.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLeftArm.Location = new Point(86, 72);
+            lblLeftArm.Name = "lblLeftArm";
+            lblLeftArm.Size = new Size(80, 106);
+            lblLeftArm.TabIndex = 4;
+            lblLeftArm.Text = "/";
+            lblLeftArm.TextAlign = ContentAlignment.TopCenter;
+            lblLeftArm.Visible = false;
             // 
-            // label10
+            // lblHead
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(137, 163);
-            label10.Name = "label10";
-            label10.Size = new Size(80, 106);
-            label10.TabIndex = 5;
-            label10.Text = "\\";
-            label10.TextAlign = ContentAlignment.TopCenter;
-            label10.Click += label10_Click;
+            lblHead.Anchor = AnchorStyles.Top;
+            lblHead.AutoSize = true;
+            lblHead.Font = new Font("Segoe UI", 60F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblHead.Location = new Point(86, -33);
+            lblHead.Name = "lblHead";
+            lblHead.Size = new Size(132, 133);
+            lblHead.TabIndex = 0;
+            lblHead.Text = "O";
+            lblHead.Visible = false;
             // 
             // Form1
             // 
@@ -736,11 +764,11 @@
         private Label label3;
         private Label label4;
         private Panel pnlMan;
-        private Label label5;
-        private Label label7;
-        private Label label6;
-        private Label label8;
-        private Label label9;
-        private Label label10;
+        private Label lblHead;
+        private Label lblLeftLeg;
+        private Label lblBody;
+        private Label lblRightArm;
+        private Label lblLeftArm;
+        private Label lblRightLeg;
     }
 }
