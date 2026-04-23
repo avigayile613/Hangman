@@ -11,7 +11,6 @@ namespace HangmanApp
     {
         Random rnd = new Random();
         List<string> lstwords = File.ReadAllLines("Words.txt").ToList();
-        List<string> lstlettersinhiddenword;
         List<string> lstguessedletters;
         List<Button> lstalphabetbuttons;
         List<Label> lstbodyparts;
@@ -22,7 +21,6 @@ namespace HangmanApp
         public Form1()
         {
             InitializeComponent();
-            lstlettersinhiddenword = new();
             lstguessedletters = new();
             lstalphabetbuttons = new();
             lstbodyparts = new() { lblHead, lblBody, lblLeftArm, lblRightArm, lblLeftLeg, lblRightLeg };
@@ -38,24 +36,31 @@ namespace HangmanApp
         private void Letter_Click(object? sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            lstguessedletters.Add(btn.Text);
-            BuildWordString();//rebuild and display the hidden word label 
-            if (!lstlettersinhiddenword.Contains(btn.Text))//Check if hidden word included the letter guessed
-            {//If it did not:
-                AddBodyPart();
-                btn.BackColor = Color.LightGray;
-                btn.Enabled = false; //change button color and disable
-                guessesremaining--;//decrease number of wrong guesses remaining
-                DetectLoss();
+            lstguessedletters.Add(btn.Text);//record guess
 
-            }
-            else
+            BuildWordString();//rebuild and display the hidden word label 
+
+            bool iscorrect = hiddenword.Contains(btn.Text);
+            if (iscorrect)//Check if hidden word included the letter guessed
             {//if it did:
-                btn.BackColor = Color.LightGreen;
-                btn.Enabled = false;//change button color and disable
+                DisableButton(btn, true);
                 DetectWin();
             }
+            else
+            { //If it did not:
+                AddBodyPart();
+                DisableButton(btn, false);
+                guessesremaining--;//decrease number of wrong guesses remaining
+                DetectLoss();
+            }
+
             UpdateMessage();
+        }
+
+        private void DisableButton(Button btn, bool iscorrect)
+        {
+            btn.BackColor = iscorrect ? Color.LightGreen : Color.LightGray;
+            btn.Enabled = false;
         }
 
         private void DetectWin()
@@ -68,7 +73,7 @@ namespace HangmanApp
 
         private void DetectLoss()
         {
-            if (guessesremaining < 0)
+            if (guessesremaining <= 0)
             {
                 ChangeGameStatus(GameStatusEnum.Lost);
             }
@@ -116,7 +121,6 @@ namespace HangmanApp
                     btnStart.Text = "Start";
                     btnGiveUp.Text = "Give Up";
                     lstguessedletters.Clear();
-                    lstlettersinhiddenword.Clear();
                     guessesremaining = 6;
                     lstbodyparts.ForEach(b => { b.Visible = false; b.ForeColor = Color.Black; });
                     lblBody.BackColor = Color.Black;
@@ -158,18 +162,15 @@ namespace HangmanApp
         private void PickHiddenWord()
         {
             hiddenword = lstwords[rnd.Next(lstwords.Count())];
-            for (int i = 0; i < hiddenword.Length; i++)//add each letter in the hidden word to a list
-            {
-                lstlettersinhiddenword.Add(hiddenword[i].ToString());
-            }
             BuildWordString();
         }
 
         private void BuildWordString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (string letter in lstlettersinhiddenword)//go through each letter that player guessed
+            foreach (char c in hiddenword)//go through each letter in hidden word
             {
+                string letter = c.ToString();
                 if (lstguessedletters.Contains(letter))//check if guessed letter is contained in hidden word
                 {
                     sb.Append(letter + " ");//if hidden word contains the letter, reveal it
@@ -185,7 +186,7 @@ namespace HangmanApp
         private void AddBodyPart()
         {//find the first body part in the list that isn't visible, and make it visible
             var parttoshow = lstbodyparts.FirstOrDefault(b => !b.Visible);
-            if (parttoshow != null) {parttoshow.Visible = true;}
+            if (parttoshow != null) { parttoshow.Visible = true; }
         }
 
 
