@@ -189,7 +189,6 @@ namespace HangmanApp
             if (parttoshow != null) { parttoshow.Visible = true; }
         }
 
-
     }
 
 }
