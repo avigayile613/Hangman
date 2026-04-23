@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tblMain = new TableLayoutPanel();
             tblToolbar = new TableLayoutPanel();
             btnStart = new Button();
@@ -84,6 +85,7 @@
             // 
             // tblMain
             // 
+            tblMain.BackColor = Color.FromArgb(128, 255, 255);
             tblMain.ColumnCount = 2;
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 62.22038F));
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.7796173F));
@@ -99,7 +101,7 @@
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 6.774194F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 44.6774178F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 36.4516144F));
-            tblMain.Size = new Size(1207, 620);
+            tblMain.Size = new Size(1241, 646);
             tblMain.TabIndex = 0;
             // 
             // tblToolbar
@@ -117,40 +119,46 @@
             tblToolbar.Name = "tblToolbar";
             tblToolbar.RowCount = 1;
             tblToolbar.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblToolbar.Size = new Size(1201, 69);
+            tblToolbar.Size = new Size(1235, 72);
             tblToolbar.TabIndex = 0;
             // 
             // btnStart
             // 
+            btnStart.BackColor = Color.FromArgb(255, 128, 0);
             btnStart.Dock = DockStyle.Fill;
-            btnStart.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnStart.Font = new Font("Wide Latin", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnStart.ForeColor = Color.Blue;
             btnStart.Location = new Point(3, 3);
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(234, 63);
+            btnStart.Size = new Size(241, 66);
             btnStart.TabIndex = 0;
             btnStart.Text = "Start";
-            btnStart.UseVisualStyleBackColor = true;
+            btnStart.UseVisualStyleBackColor = false;
             // 
             // btnGiveUp
             // 
+            btnGiveUp.BackColor = Color.FromArgb(255, 128, 0);
             btnGiveUp.Dock = DockStyle.Fill;
             btnGiveUp.Enabled = false;
-            btnGiveUp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGiveUp.Location = new Point(963, 3);
+            btnGiveUp.Font = new Font("Wide Latin", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGiveUp.ForeColor = Color.Blue;
+            btnGiveUp.Location = new Point(991, 3);
             btnGiveUp.Name = "btnGiveUp";
-            btnGiveUp.Size = new Size(235, 63);
+            btnGiveUp.Size = new Size(241, 66);
             btnGiveUp.TabIndex = 1;
             btnGiveUp.Text = "Give Up";
-            btnGiveUp.UseVisualStyleBackColor = true;
+            btnGiveUp.UseVisualStyleBackColor = false;
             // 
             // lblMessage
             // 
             lblMessage.AutoSize = true;
+            lblMessage.BackColor = Color.Yellow;
             lblMessage.Dock = DockStyle.Fill;
-            lblMessage.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMessage.Location = new Point(243, 0);
+            lblMessage.Font = new Font("Ink Free", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblMessage.ForeColor = Color.FromArgb(192, 0, 0);
+            lblMessage.Location = new Point(250, 0);
             lblMessage.Name = "lblMessage";
-            lblMessage.Size = new Size(714, 69);
+            lblMessage.Size = new Size(735, 72);
             lblMessage.TabIndex = 2;
             lblMessage.Text = "Click start to begin game.";
             lblMessage.TextAlign = ContentAlignment.MiddleCenter;
@@ -193,14 +201,14 @@
             tblAlphabet.Controls.Add(btnY, 3, 3);
             tblAlphabet.Controls.Add(btnZ, 4, 3);
             tblAlphabet.Dock = DockStyle.Fill;
-            tblAlphabet.Location = new Point(3, 120);
+            tblAlphabet.Location = new Point(3, 124);
             tblAlphabet.Name = "tblAlphabet";
             tblAlphabet.RowCount = 4;
             tblAlphabet.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tblAlphabet.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tblAlphabet.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tblAlphabet.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tblAlphabet.Size = new Size(745, 270);
+            tblAlphabet.Size = new Size(766, 282);
             tblAlphabet.TabIndex = 1;
             // 
             // btnA
@@ -210,7 +218,7 @@
             btnA.Font = new Font("Segoe UI", 12F);
             btnA.Location = new Point(3, 3);
             btnA.Name = "btnA";
-            btnA.Size = new Size(87, 61);
+            btnA.Size = new Size(89, 64);
             btnA.TabIndex = 0;
             btnA.Text = "A";
             btnA.UseVisualStyleBackColor = true;
@@ -220,9 +228,9 @@
             btnB.Dock = DockStyle.Fill;
             btnB.Enabled = false;
             btnB.Font = new Font("Segoe UI", 12F);
-            btnB.Location = new Point(96, 3);
+            btnB.Location = new Point(98, 3);
             btnB.Name = "btnB";
-            btnB.Size = new Size(87, 61);
+            btnB.Size = new Size(89, 64);
             btnB.TabIndex = 1;
             btnB.Text = "B";
             btnB.UseVisualStyleBackColor = true;
@@ -232,9 +240,9 @@
             btnC.Dock = DockStyle.Fill;
             btnC.Enabled = false;
             btnC.Font = new Font("Segoe UI", 12F);
-            btnC.Location = new Point(189, 3);
+            btnC.Location = new Point(193, 3);
             btnC.Name = "btnC";
-            btnC.Size = new Size(87, 61);
+            btnC.Size = new Size(89, 64);
             btnC.TabIndex = 2;
             btnC.Text = "C";
             btnC.UseVisualStyleBackColor = true;
@@ -244,9 +252,9 @@
             btnD.Dock = DockStyle.Fill;
             btnD.Enabled = false;
             btnD.Font = new Font("Segoe UI", 12F);
-            btnD.Location = new Point(282, 3);
+            btnD.Location = new Point(288, 3);
             btnD.Name = "btnD";
-            btnD.Size = new Size(87, 61);
+            btnD.Size = new Size(89, 64);
             btnD.TabIndex = 3;
             btnD.Text = "D";
             btnD.UseVisualStyleBackColor = true;
@@ -256,9 +264,9 @@
             btnE.Dock = DockStyle.Fill;
             btnE.Enabled = false;
             btnE.Font = new Font("Segoe UI", 12F);
-            btnE.Location = new Point(375, 3);
+            btnE.Location = new Point(383, 3);
             btnE.Name = "btnE";
-            btnE.Size = new Size(87, 61);
+            btnE.Size = new Size(89, 64);
             btnE.TabIndex = 4;
             btnE.Text = "E";
             btnE.UseVisualStyleBackColor = true;
@@ -268,9 +276,9 @@
             btnF.Dock = DockStyle.Fill;
             btnF.Enabled = false;
             btnF.Font = new Font("Segoe UI", 12F);
-            btnF.Location = new Point(468, 3);
+            btnF.Location = new Point(478, 3);
             btnF.Name = "btnF";
-            btnF.Size = new Size(87, 61);
+            btnF.Size = new Size(89, 64);
             btnF.TabIndex = 5;
             btnF.Text = "F";
             btnF.UseVisualStyleBackColor = true;
@@ -280,9 +288,9 @@
             btnG.Dock = DockStyle.Fill;
             btnG.Enabled = false;
             btnG.Font = new Font("Segoe UI", 12F);
-            btnG.Location = new Point(561, 3);
+            btnG.Location = new Point(573, 3);
             btnG.Name = "btnG";
-            btnG.Size = new Size(87, 61);
+            btnG.Size = new Size(89, 64);
             btnG.TabIndex = 6;
             btnG.Text = "G";
             btnG.UseVisualStyleBackColor = true;
@@ -292,9 +300,9 @@
             btnH.Dock = DockStyle.Fill;
             btnH.Enabled = false;
             btnH.Font = new Font("Segoe UI", 12F);
-            btnH.Location = new Point(654, 3);
+            btnH.Location = new Point(668, 3);
             btnH.Name = "btnH";
-            btnH.Size = new Size(88, 61);
+            btnH.Size = new Size(95, 64);
             btnH.TabIndex = 7;
             btnH.Text = "H";
             btnH.UseVisualStyleBackColor = true;
@@ -304,9 +312,9 @@
             btnI.Dock = DockStyle.Fill;
             btnI.Enabled = false;
             btnI.Font = new Font("Segoe UI", 12F);
-            btnI.Location = new Point(3, 70);
+            btnI.Location = new Point(3, 73);
             btnI.Name = "btnI";
-            btnI.Size = new Size(87, 61);
+            btnI.Size = new Size(89, 64);
             btnI.TabIndex = 8;
             btnI.Text = "I";
             btnI.UseVisualStyleBackColor = true;
@@ -316,9 +324,9 @@
             btnJ.Dock = DockStyle.Fill;
             btnJ.Enabled = false;
             btnJ.Font = new Font("Segoe UI", 12F);
-            btnJ.Location = new Point(96, 70);
+            btnJ.Location = new Point(98, 73);
             btnJ.Name = "btnJ";
-            btnJ.Size = new Size(87, 61);
+            btnJ.Size = new Size(89, 64);
             btnJ.TabIndex = 9;
             btnJ.Text = "J";
             btnJ.UseVisualStyleBackColor = true;
@@ -328,9 +336,9 @@
             btnK.Dock = DockStyle.Fill;
             btnK.Enabled = false;
             btnK.Font = new Font("Segoe UI", 12F);
-            btnK.Location = new Point(189, 70);
+            btnK.Location = new Point(193, 73);
             btnK.Name = "btnK";
-            btnK.Size = new Size(87, 61);
+            btnK.Size = new Size(89, 64);
             btnK.TabIndex = 10;
             btnK.Text = "K";
             btnK.UseVisualStyleBackColor = true;
@@ -340,9 +348,9 @@
             btnL.Dock = DockStyle.Fill;
             btnL.Enabled = false;
             btnL.Font = new Font("Segoe UI", 12F);
-            btnL.Location = new Point(282, 70);
+            btnL.Location = new Point(288, 73);
             btnL.Name = "btnL";
-            btnL.Size = new Size(87, 61);
+            btnL.Size = new Size(89, 64);
             btnL.TabIndex = 11;
             btnL.Text = "L";
             btnL.UseVisualStyleBackColor = true;
@@ -352,9 +360,9 @@
             btnM.Dock = DockStyle.Fill;
             btnM.Enabled = false;
             btnM.Font = new Font("Segoe UI", 12F);
-            btnM.Location = new Point(375, 70);
+            btnM.Location = new Point(383, 73);
             btnM.Name = "btnM";
-            btnM.Size = new Size(87, 61);
+            btnM.Size = new Size(89, 64);
             btnM.TabIndex = 12;
             btnM.Text = "M";
             btnM.UseVisualStyleBackColor = true;
@@ -364,9 +372,9 @@
             btnN.Dock = DockStyle.Fill;
             btnN.Enabled = false;
             btnN.Font = new Font("Segoe UI", 12F);
-            btnN.Location = new Point(468, 70);
+            btnN.Location = new Point(478, 73);
             btnN.Name = "btnN";
-            btnN.Size = new Size(87, 61);
+            btnN.Size = new Size(89, 64);
             btnN.TabIndex = 13;
             btnN.Text = "N";
             btnN.UseVisualStyleBackColor = true;
@@ -376,9 +384,9 @@
             btnO.Dock = DockStyle.Fill;
             btnO.Enabled = false;
             btnO.Font = new Font("Segoe UI", 12F);
-            btnO.Location = new Point(561, 70);
+            btnO.Location = new Point(573, 73);
             btnO.Name = "btnO";
-            btnO.Size = new Size(87, 61);
+            btnO.Size = new Size(89, 64);
             btnO.TabIndex = 14;
             btnO.Text = "O";
             btnO.UseVisualStyleBackColor = true;
@@ -388,9 +396,9 @@
             btnP.Dock = DockStyle.Fill;
             btnP.Enabled = false;
             btnP.Font = new Font("Segoe UI", 12F);
-            btnP.Location = new Point(654, 70);
+            btnP.Location = new Point(668, 73);
             btnP.Name = "btnP";
-            btnP.Size = new Size(88, 61);
+            btnP.Size = new Size(95, 64);
             btnP.TabIndex = 15;
             btnP.Text = "P";
             btnP.UseVisualStyleBackColor = true;
@@ -400,9 +408,9 @@
             btnQ.Dock = DockStyle.Fill;
             btnQ.Enabled = false;
             btnQ.Font = new Font("Segoe UI", 12F);
-            btnQ.Location = new Point(3, 137);
+            btnQ.Location = new Point(3, 143);
             btnQ.Name = "btnQ";
-            btnQ.Size = new Size(87, 61);
+            btnQ.Size = new Size(89, 64);
             btnQ.TabIndex = 16;
             btnQ.Text = "Q";
             btnQ.UseVisualStyleBackColor = true;
@@ -412,9 +420,9 @@
             btnR.Dock = DockStyle.Fill;
             btnR.Enabled = false;
             btnR.Font = new Font("Segoe UI", 12F);
-            btnR.Location = new Point(96, 137);
+            btnR.Location = new Point(98, 143);
             btnR.Name = "btnR";
-            btnR.Size = new Size(87, 61);
+            btnR.Size = new Size(89, 64);
             btnR.TabIndex = 17;
             btnR.Text = "R";
             btnR.UseVisualStyleBackColor = true;
@@ -424,9 +432,9 @@
             btnS.Dock = DockStyle.Fill;
             btnS.Enabled = false;
             btnS.Font = new Font("Segoe UI", 12F);
-            btnS.Location = new Point(189, 137);
+            btnS.Location = new Point(193, 143);
             btnS.Name = "btnS";
-            btnS.Size = new Size(87, 61);
+            btnS.Size = new Size(89, 64);
             btnS.TabIndex = 18;
             btnS.Text = "S";
             btnS.UseVisualStyleBackColor = true;
@@ -436,9 +444,9 @@
             btnT.Dock = DockStyle.Fill;
             btnT.Enabled = false;
             btnT.Font = new Font("Segoe UI", 12F);
-            btnT.Location = new Point(282, 137);
+            btnT.Location = new Point(288, 143);
             btnT.Name = "btnT";
-            btnT.Size = new Size(87, 61);
+            btnT.Size = new Size(89, 64);
             btnT.TabIndex = 19;
             btnT.Text = "T";
             btnT.UseVisualStyleBackColor = true;
@@ -448,9 +456,9 @@
             btnU.Dock = DockStyle.Fill;
             btnU.Enabled = false;
             btnU.Font = new Font("Segoe UI", 12F);
-            btnU.Location = new Point(375, 137);
+            btnU.Location = new Point(383, 143);
             btnU.Name = "btnU";
-            btnU.Size = new Size(87, 61);
+            btnU.Size = new Size(89, 64);
             btnU.TabIndex = 20;
             btnU.Text = "U";
             btnU.UseVisualStyleBackColor = true;
@@ -460,9 +468,9 @@
             btnV.Dock = DockStyle.Fill;
             btnV.Enabled = false;
             btnV.Font = new Font("Segoe UI", 12F);
-            btnV.Location = new Point(468, 137);
+            btnV.Location = new Point(478, 143);
             btnV.Name = "btnV";
-            btnV.Size = new Size(87, 61);
+            btnV.Size = new Size(89, 64);
             btnV.TabIndex = 21;
             btnV.Text = "V";
             btnV.UseVisualStyleBackColor = true;
@@ -472,9 +480,9 @@
             btnW.Dock = DockStyle.Fill;
             btnW.Enabled = false;
             btnW.Font = new Font("Segoe UI", 12F);
-            btnW.Location = new Point(561, 137);
+            btnW.Location = new Point(573, 143);
             btnW.Name = "btnW";
-            btnW.Size = new Size(87, 61);
+            btnW.Size = new Size(89, 64);
             btnW.TabIndex = 22;
             btnW.Text = "W";
             btnW.UseVisualStyleBackColor = true;
@@ -484,9 +492,9 @@
             btnX.Dock = DockStyle.Fill;
             btnX.Enabled = false;
             btnX.Font = new Font("Segoe UI", 12F);
-            btnX.Location = new Point(654, 137);
+            btnX.Location = new Point(668, 143);
             btnX.Name = "btnX";
-            btnX.Size = new Size(88, 61);
+            btnX.Size = new Size(95, 64);
             btnX.TabIndex = 23;
             btnX.Text = "X";
             btnX.UseVisualStyleBackColor = true;
@@ -496,9 +504,9 @@
             btnY.Dock = DockStyle.Fill;
             btnY.Enabled = false;
             btnY.Font = new Font("Segoe UI", 12F);
-            btnY.Location = new Point(282, 204);
+            btnY.Location = new Point(288, 213);
             btnY.Name = "btnY";
-            btnY.Size = new Size(87, 63);
+            btnY.Size = new Size(89, 66);
             btnY.TabIndex = 24;
             btnY.Text = "Y";
             btnY.UseVisualStyleBackColor = true;
@@ -508,9 +516,9 @@
             btnZ.Dock = DockStyle.Fill;
             btnZ.Enabled = false;
             btnZ.Font = new Font("Segoe UI", 12F);
-            btnZ.Location = new Point(375, 204);
+            btnZ.Location = new Point(383, 213);
             btnZ.Name = "btnZ";
-            btnZ.Size = new Size(87, 63);
+            btnZ.Size = new Size(89, 66);
             btnZ.TabIndex = 25;
             btnZ.Text = "Z";
             btnZ.UseVisualStyleBackColor = true;
@@ -521,13 +529,13 @@
             tblHiddenWord.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblHiddenWord.Controls.Add(lblHiddenWord, 0, 1);
             tblHiddenWord.Dock = DockStyle.Fill;
-            tblHiddenWord.Location = new Point(3, 396);
+            tblHiddenWord.Location = new Point(3, 412);
             tblHiddenWord.Name = "tblHiddenWord";
             tblHiddenWord.RowCount = 3;
             tblHiddenWord.RowStyles.Add(new RowStyle(SizeType.Percent, 61.29032F));
             tblHiddenWord.RowStyles.Add(new RowStyle(SizeType.Percent, 38.70968F));
             tblHiddenWord.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tblHiddenWord.Size = new Size(745, 221);
+            tblHiddenWord.Size = new Size(766, 231);
             tblHiddenWord.TabIndex = 2;
             // 
             // lblHiddenWord
@@ -535,14 +543,15 @@
             lblHiddenWord.AutoSize = true;
             lblHiddenWord.Dock = DockStyle.Fill;
             lblHiddenWord.Font = new Font("Segoe UI", 34.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblHiddenWord.Location = new Point(3, 114);
+            lblHiddenWord.Location = new Point(3, 120);
             lblHiddenWord.Name = "lblHiddenWord";
-            lblHiddenWord.Size = new Size(739, 72);
+            lblHiddenWord.Size = new Size(760, 75);
             lblHiddenWord.TabIndex = 0;
             lblHiddenWord.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.BackColor = Color.FromArgb(128, 255, 255);
             tableLayoutPanel1.ColumnCount = 5;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 3.125F));
@@ -555,7 +564,7 @@
             tableLayoutPanel1.Controls.Add(label4, 1, 0);
             tableLayoutPanel1.Controls.Add(pnlMan, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(754, 120);
+            tableLayoutPanel1.Location = new Point(775, 124);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tblMain.SetRowSpan(tableLayoutPanel1, 2);
@@ -564,7 +573,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 66.39839F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 3.43940783F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.84304953F));
-            tableLayoutPanel1.Size = new Size(450, 497);
+            tableLayoutPanel1.Size = new Size(463, 519);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // label1
@@ -573,9 +582,9 @@
             label1.BackColor = Color.Black;
             tableLayoutPanel1.SetColumnSpan(label1, 5);
             label1.Dock = DockStyle.Fill;
-            label1.Location = new Point(3, 440);
+            label1.Location = new Point(3, 459);
             label1.Name = "label1";
-            label1.Size = new Size(444, 17);
+            label1.Size = new Size(457, 17);
             label1.TabIndex = 1;
             label1.Text = "label1";
             // 
@@ -584,11 +593,11 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Black;
             label2.Dock = DockStyle.Fill;
-            label2.Location = new Point(294, 0);
+            label2.Location = new Point(302, 0);
             label2.Margin = new Padding(0);
             label2.Name = "label2";
             tableLayoutPanel1.SetRowSpan(label2, 3);
-            label2.Size = new Size(14, 440);
+            label2.Size = new Size(14, 459);
             label2.TabIndex = 2;
             label2.Text = "label2";
             // 
@@ -597,10 +606,10 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Black;
             label3.Dock = DockStyle.Fill;
-            label3.Location = new Point(154, 0);
+            label3.Location = new Point(158, 0);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
-            label3.Size = new Size(140, 17);
+            label3.Size = new Size(144, 17);
             label3.TabIndex = 3;
             label3.Text = "label3";
             // 
@@ -609,11 +618,11 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Black;
             label4.Dock = DockStyle.Fill;
-            label4.Location = new Point(140, 0);
+            label4.Location = new Point(144, 0);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
             tableLayoutPanel1.SetRowSpan(label4, 2);
-            label4.Size = new Size(14, 110);
+            label4.Size = new Size(14, 114);
             label4.TabIndex = 4;
             label4.Text = "label4";
             // 
@@ -627,9 +636,9 @@
             pnlMan.Controls.Add(lblLeftLeg);
             pnlMan.Controls.Add(lblLeftArm);
             pnlMan.Controls.Add(lblHead);
-            pnlMan.Location = new Point(3, 113);
+            pnlMan.Location = new Point(7, 117);
             pnlMan.Name = "pnlMan";
-            pnlMan.Size = new Size(288, 324);
+            pnlMan.Size = new Size(288, 339);
             pnlMan.TabIndex = 5;
             // 
             // lblBody
@@ -705,10 +714,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1207, 620);
+            BackColor = Color.FromArgb(192, 255, 192);
+            ClientSize = new Size(1241, 646);
             Controls.Add(tblMain);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            Text = "Hangman";
             tblMain.ResumeLayout(false);
             tblToolbar.ResumeLayout(false);
             tblToolbar.PerformLayout();

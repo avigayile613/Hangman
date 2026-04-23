@@ -6,7 +6,13 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Hangman</AssemblyName>
+    <ApplicationIcon>hangman_icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="hangman_icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="Words.txt">
