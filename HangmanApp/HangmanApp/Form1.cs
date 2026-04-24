@@ -14,8 +14,12 @@ namespace HangmanApp
         List<string> lstguessedletters;
         List<Button> lstalphabetbuttons;
         List<Label> lstbodyparts;
+        List<Label> lstgallowsparts;
+        List<Label> lstdrawingparts;
         string hiddenword;
-        int guessesremaining = 6;
+        int guessesremaining = 10;
+        int maxguesses = 10;
+        enum DifficultyLevel { Easy, Medium, Hard }
         enum GameStatusEnum { NotStarted, Playing, GaveUp, Won, Lost };
         GameStatusEnum gamestatus = GameStatusEnum.NotStarted;
         public Form1()
@@ -24,6 +28,8 @@ namespace HangmanApp
             lstguessedletters = new();
             lstalphabetbuttons = new();
             lstbodyparts = new() { lblHead, lblBody, lblLeftArm, lblRightArm, lblLeftLeg, lblRightLeg };
+            lstgallowsparts = new() { lblBase, lblBeam, lblPole, lblRope };
+            lstdrawingparts = lstgallowsparts.Concat(lstbodyparts).ToList();
             foreach (Button b in tblAlphabet.Controls)
             {
                 lstalphabetbuttons.Add(b);
@@ -31,6 +37,7 @@ namespace HangmanApp
             lstalphabetbuttons.ForEach(b => b.Click += Letter_Click);
             btnStart.Click += BtnStart_Click;
             btnGiveUp.Click += BtnGiveUp_Click;
+            ChangeGameStatus(GameStatusEnum.NotStarted);
         }
 
         private void Letter_Click(object? sender, EventArgs e)
@@ -48,7 +55,7 @@ namespace HangmanApp
             }
             else
             { //If it did not:
-                AddBodyPart();
+                UpdateDrawing();
                 DisableButton(btn, false);
                 guessesremaining--;//decrease number of wrong guesses remaining
                 DetectLoss();
@@ -121,28 +128,35 @@ namespace HangmanApp
                     btnStart.Text = "Start";
                     btnGiveUp.Text = "Give Up";
                     lstguessedletters.Clear();
-                    guessesremaining = 6;
-                    lstbodyparts.ForEach(b => { b.Visible = false; b.ForeColor = Color.Black; });
+                    maxguesses = GetGuessesForDifficulty(GetSelectedDifficulty());
+                    guessesremaining = maxguesses;
+                    lstdrawingparts.ForEach(b => b.Visible = false);
+                    lstbodyparts.ForEach(b => b.ForeColor = Color.Black);
                     lblBody.BackColor = Color.Black;
                     lstalphabetbuttons.ForEach(b => b.BackColor = Color.White);
+                    SetDifficultySelectionEnabled(true);
                     break;
                 case GameStatusEnum.Playing:
                     btnGiveUp.Enabled = true;
                     btnStart.Enabled = false;
                     SetAlphabetButtonsEnabled(true);
+                    SetDifficultySelectionEnabled(false);
                     break;
                 case GameStatusEnum.Lost:
+                    lstdrawingparts.ForEach(b => b.Visible = true);
                     lstbodyparts.ForEach(b => b.ForeColor = Color.Red);
                     lblBody.BackColor = Color.Red;
                     btnGiveUp.Text = "Reveal Word";
                     ResetStartButton();
                     SetAlphabetButtonsEnabled(false);
+                    SetDifficultySelectionEnabled(true);
                     break;
                 case GameStatusEnum.GaveUp:
                 case GameStatusEnum.Won:
                     ResetStartButton();
                     SetAlphabetButtonsEnabled(false);
                     btnGiveUp.Enabled = false;
+                    SetDifficultySelectionEnabled(true);
                     break;
             }
             UpdateMessage();
@@ -159,10 +173,67 @@ namespace HangmanApp
             btnStart.Enabled = true;
         }
 
+        private void SetDifficultySelectionEnabled(bool enabled)
+        {
+            rdoEasy.Enabled = enabled;
+            rdoMedium.Enabled = enabled;
+            rdoHard.Enabled = enabled;
+        }
+
         private void PickHiddenWord()
         {
-            hiddenword = lstwords[rnd.Next(lstwords.Count())];
+            List<string> wordsForDifficulty = GetWordsForDifficulty(GetSelectedDifficulty());
+            hiddenword = wordsForDifficulty[rnd.Next(wordsForDifficulty.Count)];
             BuildWordString();
+        }
+
+        private DifficultyLevel GetSelectedDifficulty()
+        {
+            if (rdoHard.Checked)
+            {
+                return DifficultyLevel.Hard;
+            }
+
+            if (rdoMedium.Checked)
+            {
+                return DifficultyLevel.Medium;
+            }
+
+            return DifficultyLevel.Easy;
+        }
+
+
+        private int GetGuessesForDifficulty(DifficultyLevel difficulty)
+        {
+            return difficulty switch
+            {
+                DifficultyLevel.Easy => 10,
+                DifficultyLevel.Medium => 7,
+                DifficultyLevel.Hard => 5,
+                _ => 7
+            };
+        }
+
+        private List<string> GetWordsForDifficulty(DifficultyLevel difficulty)
+        {
+            List<string> filteredWords = lstwords
+                .Where(word => difficulty switch
+                {
+                    DifficultyLevel.Easy => word.Length >= 3 && word.Length <= 4,
+                    DifficultyLevel.Medium => word.Length >= 5 && word.Length <= 6,
+                    DifficultyLevel.Hard => word.Length >= 7 && word.Length <= 10,
+                    _ => false
+                })
+                .OrderBy(word => word.Length)
+                .ThenBy(word => word)
+                .ToList();
+
+            if (filteredWords.Count == 0)
+            {
+                return lstwords;
+            }
+
+            return filteredWords;
         }
 
         private void BuildWordString()
@@ -183,10 +254,16 @@ namespace HangmanApp
             lblHiddenWord.Text = sb.ToString();
         }
 
-        private void AddBodyPart()
-        {//find the first body part in the list that isn't visible, and make it visible
-            var parttoshow = lstbodyparts.FirstOrDefault(b => !b.Visible);
-            if (parttoshow != null) { parttoshow.Visible = true; }
+        private void UpdateDrawing()
+        {
+            int wrongGuessesUsed = maxguesses - guessesremaining + 1;
+            int totalParts = lstdrawingparts.Count;
+            int partsToShow = (int)Math.Ceiling((double)(wrongGuessesUsed * totalParts) / maxguesses);
+
+            for (int i = 0; i < totalParts; i++)
+            {
+                lstdrawingparts[i].Visible = i < partsToShow;
+            }
         }
 
     }
