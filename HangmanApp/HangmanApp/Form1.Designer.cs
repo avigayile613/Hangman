@@ -69,10 +69,10 @@
             tblHiddenWord = new TableLayoutPanel();
             lblHiddenWord = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
+            lblBase = new Label();
+            lblPole = new Label();
+            lblBeam = new Label();
+            lblRope = new Label();
             pnlMan = new Panel();
             lblBody = new Label();
             lblRightLeg = new Label();
@@ -191,7 +191,7 @@
             lblDifficulty.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDifficulty.Location = new Point(15, 8);
             lblDifficulty.Name = "lblDifficulty";
-            lblDifficulty.Size = new Size(86, 25);
+            lblDifficulty.Size = new Size(96, 25);
             lblDifficulty.TabIndex = 0;
             lblDifficulty.Text = "Difficulty:";
             // 
@@ -200,9 +200,9 @@
             rdoEasy.Anchor = AnchorStyles.Left;
             rdoEasy.AutoSize = true;
             rdoEasy.Checked = true;
-            rdoEasy.Location = new Point(107, 10);
+            rdoEasy.Location = new Point(117, 9);
             rdoEasy.Name = "rdoEasy";
-            rdoEasy.Size = new Size(60, 24);
+            rdoEasy.Size = new Size(59, 24);
             rdoEasy.TabIndex = 1;
             rdoEasy.TabStop = true;
             rdoEasy.Text = "Easy";
@@ -212,9 +212,9 @@
             // 
             rdoMedium.Anchor = AnchorStyles.Left;
             rdoMedium.AutoSize = true;
-            rdoMedium.Location = new Point(173, 10);
+            rdoMedium.Location = new Point(182, 9);
             rdoMedium.Name = "rdoMedium";
-            rdoMedium.Size = new Size(88, 24);
+            rdoMedium.Size = new Size(85, 24);
             rdoMedium.TabIndex = 2;
             rdoMedium.Text = "Medium";
             rdoMedium.UseVisualStyleBackColor = true;
@@ -223,9 +223,9 @@
             // 
             rdoHard.Anchor = AnchorStyles.Left;
             rdoHard.AutoSize = true;
-            rdoHard.Location = new Point(267, 10);
+            rdoHard.Location = new Point(273, 9);
             rdoHard.Name = "rdoHard";
-            rdoHard.Size = new Size(62, 24);
+            rdoHard.Size = new Size(63, 24);
             rdoHard.TabIndex = 3;
             rdoHard.Text = "Hard";
             rdoHard.UseVisualStyleBackColor = true;
@@ -625,10 +625,10 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 3.125F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.25F));
-            tableLayoutPanel1.Controls.Add(label1, 0, 3);
-            tableLayoutPanel1.Controls.Add(label2, 3, 0);
-            tableLayoutPanel1.Controls.Add(label3, 2, 0);
-            tableLayoutPanel1.Controls.Add(label4, 1, 0);
+            tableLayoutPanel1.Controls.Add(lblBase, 0, 3);
+            tableLayoutPanel1.Controls.Add(lblPole, 3, 0);
+            tableLayoutPanel1.Controls.Add(lblBeam, 2, 0);
+            tableLayoutPanel1.Controls.Add(lblRope, 1, 0);
             tableLayoutPanel1.Controls.Add(pnlMan, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(775, 124);
@@ -643,55 +643,55 @@
             tableLayoutPanel1.Size = new Size(463, 519);
             tableLayoutPanel1.TabIndex = 3;
             // 
-            // label1
+            // lblBase
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Black;
-            tableLayoutPanel1.SetColumnSpan(label1, 5);
-            label1.Dock = DockStyle.Fill;
-            label1.Location = new Point(3, 459);
-            label1.Name = "label1";
-            label1.Size = new Size(457, 17);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
+            lblBase.AutoSize = true;
+            lblBase.BackColor = Color.Black;
+            tableLayoutPanel1.SetColumnSpan(lblBase, 5);
+            lblBase.Dock = DockStyle.Fill;
+            lblBase.Location = new Point(3, 459);
+            lblBase.Name = "lblBase";
+            lblBase.Size = new Size(457, 17);
+            lblBase.TabIndex = 1;
+            lblBase.Text = "label1";
             // 
-            // label2
+            // lblPole
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Black;
-            label2.Dock = DockStyle.Fill;
-            label2.Location = new Point(302, 0);
-            label2.Margin = new Padding(0);
-            label2.Name = "label2";
-            tableLayoutPanel1.SetRowSpan(label2, 3);
-            label2.Size = new Size(14, 459);
-            label2.TabIndex = 2;
-            label2.Text = "label2";
+            lblPole.AutoSize = true;
+            lblPole.BackColor = Color.Black;
+            lblPole.Dock = DockStyle.Fill;
+            lblPole.Location = new Point(302, 0);
+            lblPole.Margin = new Padding(0);
+            lblPole.Name = "lblPole";
+            tableLayoutPanel1.SetRowSpan(lblPole, 3);
+            lblPole.Size = new Size(14, 459);
+            lblPole.TabIndex = 2;
+            lblPole.Text = "label2";
             // 
-            // label3
+            // lblBeam
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Black;
-            label3.Dock = DockStyle.Fill;
-            label3.Location = new Point(158, 0);
-            label3.Margin = new Padding(0);
-            label3.Name = "label3";
-            label3.Size = new Size(144, 17);
-            label3.TabIndex = 3;
-            label3.Text = "label3";
+            lblBeam.AutoSize = true;
+            lblBeam.BackColor = Color.Black;
+            lblBeam.Dock = DockStyle.Fill;
+            lblBeam.Location = new Point(158, 0);
+            lblBeam.Margin = new Padding(0);
+            lblBeam.Name = "lblBeam";
+            lblBeam.Size = new Size(144, 17);
+            lblBeam.TabIndex = 3;
+            lblBeam.Text = "label3";
             // 
-            // label4
+            // lblRope
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Black;
-            label4.Dock = DockStyle.Fill;
-            label4.Location = new Point(144, 0);
-            label4.Margin = new Padding(0);
-            label4.Name = "label4";
-            tableLayoutPanel1.SetRowSpan(label4, 2);
-            label4.Size = new Size(14, 114);
-            label4.TabIndex = 4;
-            label4.Text = "label4";
+            lblRope.AutoSize = true;
+            lblRope.BackColor = Color.Black;
+            lblRope.Dock = DockStyle.Fill;
+            lblRope.Location = new Point(144, 0);
+            lblRope.Margin = new Padding(0);
+            lblRope.Name = "lblRope";
+            tableLayoutPanel1.SetRowSpan(lblRope, 2);
+            lblRope.Size = new Size(14, 114);
+            lblRope.TabIndex = 4;
+            lblRope.Text = "label4";
             // 
             // pnlMan
             // 
@@ -844,10 +844,10 @@
         private RadioButton rdoMedium;
         private RadioButton rdoHard;
         private TableLayoutPanel tableLayoutPanel1;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
+        private Label lblBase;
+        private Label lblPole;
+        private Label lblBeam;
+        private Label lblRope;
         private Panel pnlMan;
         private Label lblHead;
         private Label lblLeftLeg;
