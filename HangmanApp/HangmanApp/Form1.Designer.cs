@@ -34,6 +34,11 @@
             btnStart = new Button();
             btnGiveUp = new Button();
             lblMessage = new Label();
+            pnlDifficulty = new FlowLayoutPanel();
+            lblDifficulty = new Label();
+            rdoEasy = new RadioButton();
+            rdoMedium = new RadioButton();
+            rdoHard = new RadioButton();
             tblAlphabet = new TableLayoutPanel();
             btnA = new Button();
             btnB = new Button();
@@ -77,6 +82,7 @@
             lblHead = new Label();
             tblMain.SuspendLayout();
             tblToolbar.SuspendLayout();
+            pnlDifficulty.SuspendLayout();
             tblAlphabet.SuspendLayout();
             tblHiddenWord.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -90,6 +96,7 @@
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 62.22038F));
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.7796173F));
             tblMain.Controls.Add(tblToolbar, 0, 0);
+            tblMain.Controls.Add(pnlDifficulty, 0, 1);
             tblMain.Controls.Add(tblAlphabet, 0, 2);
             tblMain.Controls.Add(tblHiddenWord, 0, 3);
             tblMain.Controls.Add(tableLayoutPanel1, 1, 2);
@@ -162,6 +169,66 @@
             lblMessage.TabIndex = 2;
             lblMessage.Text = "Click start to begin game.";
             lblMessage.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnlDifficulty
+            // 
+            tblMain.SetColumnSpan(pnlDifficulty, 2);
+            pnlDifficulty.Controls.Add(lblDifficulty);
+            pnlDifficulty.Controls.Add(rdoEasy);
+            pnlDifficulty.Controls.Add(rdoMedium);
+            pnlDifficulty.Controls.Add(rdoHard);
+            pnlDifficulty.Dock = DockStyle.Fill;
+            pnlDifficulty.Location = new Point(3, 81);
+            pnlDifficulty.Name = "pnlDifficulty";
+            pnlDifficulty.Padding = new Padding(12, 6, 12, 6);
+            pnlDifficulty.Size = new Size(1235, 37);
+            pnlDifficulty.TabIndex = 4;
+            // 
+            // lblDifficulty
+            // 
+            lblDifficulty.Anchor = AnchorStyles.Left;
+            lblDifficulty.AutoSize = true;
+            lblDifficulty.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDifficulty.Location = new Point(15, 8);
+            lblDifficulty.Name = "lblDifficulty";
+            lblDifficulty.Size = new Size(86, 25);
+            lblDifficulty.TabIndex = 0;
+            lblDifficulty.Text = "Difficulty:";
+            // 
+            // rdoEasy
+            // 
+            rdoEasy.Anchor = AnchorStyles.Left;
+            rdoEasy.AutoSize = true;
+            rdoEasy.Checked = true;
+            rdoEasy.Location = new Point(107, 10);
+            rdoEasy.Name = "rdoEasy";
+            rdoEasy.Size = new Size(60, 24);
+            rdoEasy.TabIndex = 1;
+            rdoEasy.TabStop = true;
+            rdoEasy.Text = "Easy";
+            rdoEasy.UseVisualStyleBackColor = true;
+            // 
+            // rdoMedium
+            // 
+            rdoMedium.Anchor = AnchorStyles.Left;
+            rdoMedium.AutoSize = true;
+            rdoMedium.Location = new Point(173, 10);
+            rdoMedium.Name = "rdoMedium";
+            rdoMedium.Size = new Size(88, 24);
+            rdoMedium.TabIndex = 2;
+            rdoMedium.Text = "Medium";
+            rdoMedium.UseVisualStyleBackColor = true;
+            // 
+            // rdoHard
+            // 
+            rdoHard.Anchor = AnchorStyles.Left;
+            rdoHard.AutoSize = true;
+            rdoHard.Location = new Point(267, 10);
+            rdoHard.Name = "rdoHard";
+            rdoHard.Size = new Size(62, 24);
+            rdoHard.TabIndex = 3;
+            rdoHard.Text = "Hard";
+            rdoHard.UseVisualStyleBackColor = true;
             // 
             // tblAlphabet
             // 
@@ -723,6 +790,8 @@
             tblMain.ResumeLayout(false);
             tblToolbar.ResumeLayout(false);
             tblToolbar.PerformLayout();
+            pnlDifficulty.ResumeLayout(false);
+            pnlDifficulty.PerformLayout();
             tblAlphabet.ResumeLayout(false);
             tblHiddenWord.ResumeLayout(false);
             tblHiddenWord.PerformLayout();
@@ -769,6 +838,11 @@
         private Button btnY;
         private Button btnZ;
         private Label lblMessage;
+        private FlowLayoutPanel pnlDifficulty;
+        private Label lblDifficulty;
+        private RadioButton rdoEasy;
+        private RadioButton rdoMedium;
+        private RadioButton rdoHard;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label1;
         private Label label2;

@@ -16,6 +16,7 @@ namespace HangmanApp
         List<Label> lstbodyparts;
         string hiddenword;
         int guessesremaining = 6;
+        enum DifficultyLevel { Easy, Medium, Hard }
         enum GameStatusEnum { NotStarted, Playing, GaveUp, Won, Lost };
         GameStatusEnum gamestatus = GameStatusEnum.NotStarted;
         public Form1()
@@ -161,8 +162,49 @@ namespace HangmanApp
 
         private void PickHiddenWord()
         {
-            hiddenword = lstwords[rnd.Next(lstwords.Count())];
+            List<string> wordsForDifficulty = GetWordsForDifficulty(GetSelectedDifficulty());
+            hiddenword = wordsForDifficulty[rnd.Next(wordsForDifficulty.Count)];
             BuildWordString();
+        }
+
+        private DifficultyLevel GetSelectedDifficulty()
+        {
+            if (rdoHard.Checked)
+            {
+                return DifficultyLevel.Hard;
+            }
+
+            if (rdoMedium.Checked)
+            {
+                return DifficultyLevel.Medium;
+            }
+
+            return DifficultyLevel.Easy;
+        }
+
+        private List<string> GetWordsForDifficulty(DifficultyLevel difficulty)
+        {
+            List<string> sortedWords = lstwords
+                .OrderBy(word => word.Length)
+                .ThenBy(word => word)
+                .ToList();
+
+            if (sortedWords.Count < 3)
+            {
+                return sortedWords;
+            }
+
+            int easyCount = sortedWords.Count / 3;
+            int mediumCount = sortedWords.Count / 3;
+            int hardCount = sortedWords.Count - easyCount - mediumCount;
+
+            return difficulty switch
+            {
+                DifficultyLevel.Easy => sortedWords.Take(easyCount).ToList(),
+                DifficultyLevel.Medium => sortedWords.Skip(easyCount).Take(mediumCount).ToList(),
+                DifficultyLevel.Hard => sortedWords.Skip(easyCount + mediumCount).Take(hardCount).ToList(),
+                _ => sortedWords
+            };
         }
 
         private void BuildWordString()
