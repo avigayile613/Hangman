@@ -28,7 +28,7 @@ namespace HangmanApp
             lstguessedletters = new();
             lstalphabetbuttons = new();
             lstbodyparts = new() { lblHead, lblBody, lblLeftArm, lblRightArm, lblLeftLeg, lblRightLeg };
-            lstgallowsparts = new() { lblBase, lblBeam, lblPole, lblRope };
+            lstgallowsparts = new() { lblBase, lblPole, lblBeam, lblRope };
             lstdrawingparts = lstgallowsparts.Concat(lstbodyparts).ToList();
             foreach (Button b in tblAlphabet.Controls)
             {
