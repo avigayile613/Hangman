@@ -126,11 +126,13 @@ namespace HangmanApp
                     lstbodyparts.ForEach(b => { b.Visible = false; b.ForeColor = Color.Black; });
                     lblBody.BackColor = Color.Black;
                     lstalphabetbuttons.ForEach(b => b.BackColor = Color.White);
+                    SetDifficultySelectionEnabled(true);
                     break;
                 case GameStatusEnum.Playing:
                     btnGiveUp.Enabled = true;
                     btnStart.Enabled = false;
                     SetAlphabetButtonsEnabled(true);
+                    SetDifficultySelectionEnabled(false);
                     break;
                 case GameStatusEnum.Lost:
                     lstbodyparts.ForEach(b => b.ForeColor = Color.Red);
@@ -138,12 +140,14 @@ namespace HangmanApp
                     btnGiveUp.Text = "Reveal Word";
                     ResetStartButton();
                     SetAlphabetButtonsEnabled(false);
+                    SetDifficultySelectionEnabled(true);
                     break;
                 case GameStatusEnum.GaveUp:
                 case GameStatusEnum.Won:
                     ResetStartButton();
                     SetAlphabetButtonsEnabled(false);
                     btnGiveUp.Enabled = false;
+                    SetDifficultySelectionEnabled(true);
                     break;
             }
             UpdateMessage();
@@ -158,6 +162,13 @@ namespace HangmanApp
         {
             btnStart.Text = "Start New Game";
             btnStart.Enabled = true;
+        }
+
+        private void SetDifficultySelectionEnabled(bool enabled)
+        {
+            rdoEasy.Enabled = enabled;
+            rdoMedium.Enabled = enabled;
+            rdoHard.Enabled = enabled;
         }
 
         private void PickHiddenWord()
@@ -184,27 +195,24 @@ namespace HangmanApp
 
         private List<string> GetWordsForDifficulty(DifficultyLevel difficulty)
         {
-            List<string> sortedWords = lstwords
+            List<string> filteredWords = lstwords
+                .Where(word => difficulty switch
+                {
+                    DifficultyLevel.Easy => word.Length >= 3 && word.Length <= 4,
+                    DifficultyLevel.Medium => word.Length >= 5 && word.Length <= 6,
+                    DifficultyLevel.Hard => word.Length >= 7 && word.Length <= 10,
+                    _ => false
+                })
                 .OrderBy(word => word.Length)
                 .ThenBy(word => word)
                 .ToList();
 
-            if (sortedWords.Count < 3)
+            if (filteredWords.Count == 0)
             {
-                return sortedWords;
+                return lstwords;
             }
 
-            int easyCount = sortedWords.Count / 3;
-            int mediumCount = sortedWords.Count / 3;
-            int hardCount = sortedWords.Count - easyCount - mediumCount;
-
-            return difficulty switch
-            {
-                DifficultyLevel.Easy => sortedWords.Take(easyCount).ToList(),
-                DifficultyLevel.Medium => sortedWords.Skip(easyCount).Take(mediumCount).ToList(),
-                DifficultyLevel.Hard => sortedWords.Skip(easyCount + mediumCount).Take(hardCount).ToList(),
-                _ => sortedWords
-            };
+            return filteredWords;
         }
 
         private void BuildWordString()
