@@ -14,8 +14,10 @@ namespace HangmanApp
         List<string> lstguessedletters;
         List<Button> lstalphabetbuttons;
         List<Label> lstbodyparts;
+        List<Label> lstgallowsparts;
         string hiddenword;
-        int guessesremaining = 6;
+        int guessesremaining = 7;
+        bool gallowsDrawn;
         enum DifficultyLevel { Easy, Medium, Hard }
         enum GameStatusEnum { NotStarted, Playing, GaveUp, Won, Lost };
         GameStatusEnum gamestatus = GameStatusEnum.NotStarted;
@@ -25,6 +27,7 @@ namespace HangmanApp
             lstguessedletters = new();
             lstalphabetbuttons = new();
             lstbodyparts = new() { lblHead, lblBody, lblLeftArm, lblRightArm, lblLeftLeg, lblRightLeg };
+            lstgallowsparts = new() { label1, label2, label3, label4 };
             foreach (Button b in tblAlphabet.Controls)
             {
                 lstalphabetbuttons.Add(b);
@@ -32,6 +35,7 @@ namespace HangmanApp
             lstalphabetbuttons.ForEach(b => b.Click += Letter_Click);
             btnStart.Click += BtnStart_Click;
             btnGiveUp.Click += BtnGiveUp_Click;
+            ChangeGameStatus(GameStatusEnum.NotStarted);
         }
 
         private void Letter_Click(object? sender, EventArgs e)
@@ -122,7 +126,9 @@ namespace HangmanApp
                     btnStart.Text = "Start";
                     btnGiveUp.Text = "Give Up";
                     lstguessedletters.Clear();
-                    guessesremaining = 6;
+                    guessesremaining = 7;
+                    gallowsDrawn = false;
+                    lstgallowsparts.ForEach(b => b.Visible = false);
                     lstbodyparts.ForEach(b => { b.Visible = false; b.ForeColor = Color.Black; });
                     lblBody.BackColor = Color.Black;
                     lstalphabetbuttons.ForEach(b => b.BackColor = Color.White);
@@ -234,7 +240,14 @@ namespace HangmanApp
         }
 
         private void AddBodyPart()
-        {//find the first body part in the list that isn't visible, and make it visible
+        {//show gallows first, then reveal body parts one at a time
+            if (!gallowsDrawn)
+            {
+                lstgallowsparts.ForEach(b => b.Visible = true);
+                gallowsDrawn = true;
+                return;
+            }
+
             var parttoshow = lstbodyparts.FirstOrDefault(b => !b.Visible);
             if (parttoshow != null) { parttoshow.Visible = true; }
         }
